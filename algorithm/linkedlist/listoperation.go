@@ -1,31 +1,10 @@
-package linkedlist_1
+package linkedlist
 
 import "fmt"
 
-type LinkNode struct {
-	next *LinkNode
-	data interface{}
+func (n *ListNode) GetValue() interface{} {
+	return n.value
 }
-
-type LinkedList struct {
-	head *LinkNode // 链表的头节点
-}
-
-func (n *LinkNode) GetValue() interface{} {
-	return n.data
-}
-
-// 创建一个新节点
-func NewLinkNode(v interface{}) *LinkNode {
-	return &LinkNode{nil, v}
-}
-
-func NewLinkedList() *LinkedList {
-	return &LinkedList{
-		NewLinkNode(0),
-	}
-}
-
 
 // 向链表开头插入节点
 func (l *LinkedList) InsertHead(v interface{}) bool {
@@ -42,19 +21,6 @@ func (l *LinkedList) InsertTail(v interface{}) bool {
 	}
 
 	return l.InsertAfter(cur, v)
-}
-
-// 在某个节点后面插入节点
-func (l *LinkedList) InsertAfter(n *LinkNode, v interface{}) bool {
-	if n == nil {
-		return false
-	}
-
-	newNode := NewLinkNode(v)
-	oldNext := n.next
-	n.next = newNode
-	newNode.next = oldNext
-	return true
 }
 
 // 打印链表
@@ -82,7 +48,7 @@ func (l *LinkedList) Reverse() {
 
 	// 执行反转
 	cur := l.head.next
-	var pre *LinkNode = nil
+	var pre *ListNode = nil
 	for cur != nil {
 		temp := cur.next
 		cur.next = pre
@@ -121,7 +87,7 @@ func MergeSortList(l1, l2 *LinkedList) *LinkedList {
 	}
 
 	// 初始化一个新链表
-	l := &LinkedList{head: &LinkNode{}}
+	l := &LinkedList{head: &ListNode{}}
 	cur := l.head
 	curl1 := l1.head.next
 	curl2 := l2.head.next
@@ -173,7 +139,7 @@ func (l *LinkedList) DeleteBottomN(n int) *LinkedList{
 }
 
 // 获取链表的中间节点
-func (l *LinkedList) FindMiddleNode() *LinkNode {
+func (l *LinkedList) FindMiddleNode() *ListNode {
 	if nil == l || l.head == nil || l.head.next == nil {
 		return nil
 	}

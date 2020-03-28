@@ -1,4 +1,4 @@
-package linkedlist_1
+package linkedlist
 
 import (
 	"testing"
