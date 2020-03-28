@@ -1,5 +1,6 @@
 package recursion
 
+// 递归实现阶乘
 func Factorial(n int) int {
 	if n <= 1 {
 		return n

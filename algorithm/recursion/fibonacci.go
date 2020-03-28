@@ -1,5 +1,6 @@
 package recursion
 
+// 递归实现斐波那契数列
 type Fib struct {
 	val map[int]int
 }
