@@ -2,6 +2,7 @@ package stack
 
 import "fmt"
 
+// 模拟游览器前进后退简单实现
 type Browser struct {
 	forwardStack Stack
 	backStack Stack

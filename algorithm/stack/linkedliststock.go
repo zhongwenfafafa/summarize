@@ -2,6 +2,7 @@ package stack
 
 import "fmt"
 
+// 链表栈
 type ListNode struct {
 	next *ListNode
 	value interface{}

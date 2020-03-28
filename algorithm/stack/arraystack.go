@@ -2,6 +2,7 @@ package stack
 
 import "fmt"
 
+// 数组栈
 type ArrayList struct {
 	data []interface{}
 	top int //栈顶指针
