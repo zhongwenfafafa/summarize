@@ -16,7 +16,15 @@ func NewArrQueue(cap int) *ArrQueue {
 
 func (q *ArrQueue) EnQueue(v interface{}) bool {
 	if q.tail == q.cap {
-		return false
+		if q.head == 0 {
+			return false
+		}
+		// 当head不等于0的时候触发搬移操作平均时间复杂度O(1)
+		for i := q.head; i < q.tail; i++ {
+			q.data[i - q.head] = q.data[i]
+		}
+		q.tail -= q.head
+		q.head = 0
 	}
 
 	q.data[q.tail] = v
